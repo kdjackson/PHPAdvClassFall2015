@@ -40,7 +40,7 @@
 
         if (empty($email)) {
         $message = 'Sorry Email is Empty';
-        } else if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false ) {
+        } else if (filter_var($email, FILTER_VALIDATE_EMAIL) == false ) {
         $message = 'Sorry Email is Invalid';
         }
 
@@ -68,7 +68,7 @@
         $message = 'Zip invalid';
         }
 
-        } else if (empty($dob)) {
+        if (empty($dob)) {
         $message = 'Sorry Birthday is Empty';
         } else if (addAddress($fullname, $email, $address1, $city, $state, $zip, $dob)) {
         $message = 'Address Added';
@@ -79,6 +79,7 @@
         $state = '';
         $zip = '';
         $dob = '';
+        }
         }
 
 
