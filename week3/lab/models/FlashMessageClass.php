@@ -40,10 +40,8 @@ class FlashMessageClass extends MessageClass {
     }
     
     private function setFlashMessages() {
-        $_SESSION['flashmessages'] = $this->getAllMessages();       
+        $_SESSION['flashmessages'] = $this->messages;       
     } 
 
     
-
-
 }
