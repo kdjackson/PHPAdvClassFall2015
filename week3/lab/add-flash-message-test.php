@@ -24,8 +24,6 @@ and open the template in the editor.
         
         $message->addMessage('test', 'my test message');
        
-//        var_dump($message->getAllMessages());
-//        echo '<br />';
         var_dump($message instanceof IMessage);
         ?>
     </body>
