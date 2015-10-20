@@ -30,7 +30,7 @@ class FlashMessageClass extends MessageClass {
     public function getAllMessages() {
         $messages = $_SESSION['flashmessages'];
         $this->removeAllMessages();
-        return $this->messages;
+        return $messages;
     
     }
     
@@ -42,6 +42,5 @@ class FlashMessageClass extends MessageClass {
     private function setFlashMessages() {
         $_SESSION['flashmessages'] = $this->messages;       
     } 
-
     
 }

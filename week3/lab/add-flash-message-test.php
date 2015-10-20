@@ -12,23 +12,21 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
- 
         
+        session_start();
+                
         include './models/IMessage.php';
         include './models/MessageClass.php';
+        include './models/FlashMessageClass.php';
+
         
-        $message = new MessageClass();
+        $message = new FlashMessageClass();
         
         $message->addMessage('test', 'my test message');
-        
-        var_dump($message->getAllMessages());
-        echo '<br />';
+       
+//        var_dump($message->getAllMessages());
+//        echo '<br />';
         var_dump($message instanceof IMessage);
-        echo '<br />';
-        var_dump($message->removeMessage('test'));
-        echo '<br />';
-        var_dump($message->getAllMessages());
-        
         ?>
     </body>
 </html>
