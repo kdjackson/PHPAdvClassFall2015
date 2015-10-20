@@ -4,8 +4,14 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
+        <h1>Flash Message Test</h1>
+        <div class="text-primary" style="font-size:20px; margin-left:20px;">
         <?php
         // put your code here
         session_start();
@@ -28,6 +34,7 @@
         echo '<br />';
         var_dump($flashMessage->getAllMessages());
         ?>
+        </div>
         
     </body>
 </html>
