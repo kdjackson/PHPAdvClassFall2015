@@ -29,12 +29,13 @@ class Signup {
 
     public function save($email, $password) {
         
+        
         $stmt = $this->getDb()->prepare("INSERT INTO users set email = :email, password = :password, created = now()");
         $hash = password_hash($password, PASSWORD_DEFAULT); 
         
         $binds = array(
             ":email" => $email,
-            ":password" => $hash
+            ":password" => $password
         );
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {

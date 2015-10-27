@@ -28,6 +28,7 @@
             $login = new Login();
             
             $email= filter_input(INPUT_POST, 'email');
+            $password= filter_input(INPUT_POST,'password');
             
             $user_id = $login->verify($email, $password);
             
