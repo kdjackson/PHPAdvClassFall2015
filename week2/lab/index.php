@@ -31,10 +31,10 @@
             $password= filter_input(INPUT_POST,'password');
             
             $user_id = $login->verify($email, $password);
-            
+                        
             if ($user_id > 0) {
                 $_SESSION['user_id'] = $user_id;
-                header('Location: admin.php');
+                header('Location: admin2.php');
             }
         ?>
         

@@ -35,7 +35,7 @@ class Signup {
         
         $binds = array(
             ":email" => $email,
-            ":password" => $password
+            ":password" => $hash
         );
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
