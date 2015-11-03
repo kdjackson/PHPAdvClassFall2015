@@ -6,7 +6,7 @@
  */  
 function dbconnect() {
     $config = array(
-        'DB_DNS' => 'mysql:host=localhost;port=3307;dbname=PHPAdvClassFall2015',
+        'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPAdvClassFall2015',
         'DB_USER' => 'root',
         'DB_PASSWORD' => ''
     );

@@ -14,11 +14,12 @@
         require_once '../functions/dbconnect.php';
         require_once '../functions/util.php';
 
-        $fullnameRegex = '/^[A-Z][-a-zA-Z]+$/';
+        $fullnameRegex = '/^[\\p{L} .-]+$/';
         $address1Regex = '/^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$/';
         $cityRegex = '/^[a-zA-Z]*$/';
         $stateRegex = '/^[a-zA-Z{2}]*$/';
         $zipRegex = '/^\d{5}(?:[-\s]\d{4})?$/';
+        $isValid = true;
 
 
         $fullname = filter_input(INPUT_POST, 'fullname');
@@ -32,55 +33,75 @@
 
         if (isPostRequest()) {
 
-        if (empty($fullname)) {
-        $message = 'Sorry Fullname is Empty';
-        } else if (!preg_match($fullnameRegex, $fullname) ) {
-        $message = 'Fullname invalid';
+            if (empty($fullname)) {
+                $message = 'Sorry Fullname is Empty';
+                $isValid = false;
+            } else if (!preg_match($fullnameRegex, $fullname)) {
+                $message = 'Fullname invalid';
+                $isValid = false;
+            }
+
+            if (empty($email)) {
+                $message = 'Sorry Email is Empty';
+                $isValid = false;
+            } else if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
+                $message = 'Sorry Email is Invalid';
+                $isValid = false;
+            }
+
+            if (empty($address1)) {
+                $message = 'Sorry Address Line 1 is Empty';
+                $isValid = false;
+            } else if (!preg_match($address1Regex, $address1)) {
+                $message = 'Address Line 1 is invalid';
+                $isValid = false;
+            }
+
+            if (empty($city)) {
+                $message = 'Sorry City is Empty';
+                $isValid = false;
+            } else if (!preg_match($cityRegex, $city)) {
+                $message = 'City invalid';
+                $isValid = false;
+            }
+
+            if (empty($state)) {
+                $message = 'Sorry State is Empty';
+                $isValid = false;
+            } else if (!preg_match($stateRegex, $state)) {
+                $message = 'State invalid';
+                $isValid = false;
+            }
+
+            if (empty($zip)) {
+                $message = 'Sorry Zip is Empty';
+                $isValid = false;
+            } else if (!preg_match($zipRegex, $zip)) {
+                $message = 'Zip invalid';
+                $isValid = false;
+            }
+
+            if (empty($dob)) {
+                $message = 'Sorry Birthday is Empty';
+                $isValid = false;
+            }
+        
+
+        if ($isValid) {
+
+            addAddress($fullname, $email, $address1, $city, $state, $zip, $dob);
+
+                $message = 'Address Added';
+                $fullname = '';
+                $email = '';
+                $address1 = '';
+                $city = '';
+                $state = '';
+                $zip = '';
+                $dob = '';
+            }
         }
 
-        if (empty($email)) {
-        $message = 'Sorry Email is Empty';
-        } else if (filter_var($email, FILTER_VALIDATE_EMAIL) == false ) {
-        $message = 'Sorry Email is Invalid';
-        }
-
-        if (empty($address1)) {
-        $message = 'Sorry Address Line 1 is Empty';
-        } else if (!preg_match($address1Regex, $address1) ) {
-        $message = 'Address Line 1 is invalid';
-        }
-
-        if (empty($city)) {
-        $message = 'Sorry City is Empty';
-        } else if (!preg_match($cityRegex, $city) ) {
-        $message = 'City invalid';
-        }
-
-        if (empty($state)) {
-        $message = 'Sorry State is Empty';
-        } else if (!preg_match($stateRegex, $state) ) {
-        $message = 'State invalid';
-        }
-
-        if (empty($zip)) {
-        $message = 'Sorry Zip is Empty';
-        } else if (!preg_match($zipRegex, $zip) ) {
-        $message = 'Zip invalid';
-        }
-
-        if (empty($dob)) {
-        $message = 'Sorry Birthday is Empty';
-        } else if (addAddress($fullname, $email, $address1, $city, $state, $zip, $dob)) {
-        $message = 'Address Added';
-        $fullname = '';
-        $email = '';
-        $address1 = '';
-        $city = '';
-        $state = '';
-        $zip = '';
-        $dob = '';
-        }
-        }
 
 
         include '../templates/message.php';
