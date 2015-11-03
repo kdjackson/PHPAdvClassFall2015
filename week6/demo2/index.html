@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO Widget Angular App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">        
+    </head>
+    <body ng-app="app.widgets">
+        <div ng-controller="WidgetController as vm" class="container">   
+            
+            <div class="page-header">
+                <h1>TODO Widget Angular App <br /><small>Example of using one controller to have directives communicate</small></h1>
+              </div>
+            
+            <div class="well container" data-widget-two="" data-title="Widget Add" data-add="vm.addTodoItem(item)"></div>             
+            <div class="well container" data-widget-one="" data-title="Widget List" data-todo-items="vm.todoItems" data-remove-item='vm.removeTodoItem()'></div>
+        </div>  
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="js/widget.module.js"></script>
+        <script src="js/widget.controller.js"></script>
+        <script src="js/todo.service.js"></script>
+        <script src="js/widget-one.directive.js"></script>
+        <script src="js/widget-two.directive.js"></script>
+    </body>
+</html>

@@ -13,8 +13,10 @@ if ($logout == 1) {
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
 } else if (isset($_SESSION['user_id'])) {
-    echo 'wall boogie';
+    echo '<a href="?logout=1">Logout</a>';
+    
 }
+
 ?>  
 
 <!DOCTYPE html>
@@ -27,10 +29,14 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
 
-        adjfklajkldfj
+        
 
     </body>
 </html>

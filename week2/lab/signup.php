@@ -4,6 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
         <?php
@@ -51,9 +55,12 @@
         
          <?php include './templates/errors.html.php'; ?>
          <?php include './templates/messages.html.php'; ?>
+
         <h1>Signup Form</h1>
         
         <?php include './templates/login-form.html.php'; ?>
         
+        <a href="index.php">Already a Member? Login Here</a> <br />
+
     </body>
 </html>

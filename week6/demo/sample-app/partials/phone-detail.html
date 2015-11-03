@@ -1,0 +1,8 @@
+
+<h1>{{phone.name | uppercase}}</h1>
+
+<div class="content">
+    <img ng-src="{{phone.imageUrl}}" />
+    <p ng-if="phone.carrier.length > 0"><strong>Carrier:</strong> {{phone.carrier}}</p>
+    <p>{{phone.snippet}}</p>
+</div>

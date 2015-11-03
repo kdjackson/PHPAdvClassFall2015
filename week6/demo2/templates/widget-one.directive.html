@@ -1,0 +1,12 @@
+<h2>{{title}}</h2>
+
+ <p ng-show="todoItems.length">
+    <button ng-click="removeItem()" class='btn btn-danger btn-sm'>Remove Last Item</button>
+</p>
+
+
+<ol class="list-group">
+    <li ng-repeat="item in todoItems track by $index" class="list-group-item">
+       <span class="label label-default">{{$index+1}}</span> {{ item }}
+    </li>
+</ol>
