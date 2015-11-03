@@ -45,5 +45,6 @@
             echo 'No Results Found';
         }
         ?>
+        <a href="add-address.php">Add Address</a>
     </body>
 </html>

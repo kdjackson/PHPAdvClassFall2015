@@ -126,6 +126,8 @@
                 Zip: <input name="zip" value="<?php echo $zip; ?>" /> <br />
                 Birthday: <input type="date" name="dob" value="<?php echo $dob; ?>" /> <br />
                 <input type="submit" value="submit" class="btn btn-primary" />
+                <br/>
+                <a href="view-address.php">View Addresses</a>
             </form>
         </div>
 
