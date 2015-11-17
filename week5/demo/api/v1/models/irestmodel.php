@@ -1,20 +1,12 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author 001348911
+ * @author GFORTI
  */
-interface irestmodel {
+interface IRestModel {
     //put your code here
     function getAll();
-    function get($id);
-    function post();
-    function put();
-    function delete();
+    function get($id); 
+    function post($serverData);
 }

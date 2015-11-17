@@ -1,0 +1,19 @@
+<h1>Address Details</h1>
+
+<div class="content">
+    
+    <h2>{{address.fullname | uppercase}}</h2>
+
+    <p><strong> Born on:</strong> {{ address.birthday | date:'longDate' }} </p>
+
+    <p><strong>Email: </strong>
+        <a href="" ng-href="mailto:{{address.email}}">{{address.email}}</a>
+    </p>
+
+    <address>
+        {{address.addressline1}} <br />
+        {{address.city}}, {{address.state}} {{address.zip}}
+    </address>
+    
+    <p><a href="#/">Back</a></p>
+</div>

@@ -1,0 +1,46 @@
+/* app css stylesheet */
+
+
+h1 {
+    background-color: #EEE;
+    border: 1px solid black;
+    padding: 0.1em;
+    text-align: center;
+    
+}
+
+content {
+    text-align: center;
+}
+
+.gridtable {	
+	border-width: 1px;
+	border-color: #999;
+	border-collapse: collapse;
+        margin: 0 auto;
+}
+.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+
+.footer {
+    margin-top: 2em;
+    border-top: 1px solid black;
+    padding: 1em;
+}
+
+.content {
+    text-align: center;
+}
+

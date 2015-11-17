@@ -89,7 +89,8 @@
                     }
                 };
                 //var username = 'test';
-               // xmlhttp.setRequestHeader("Authorization", "Basic " + btoa(username + ":"));
+               // xmlhttp.setRequestHeader("Authorization", "Basic " + btoa(username + "
+               // "));
 
                  if ( verb === 'GET' ) {
                       xmlhttp.send(null);
