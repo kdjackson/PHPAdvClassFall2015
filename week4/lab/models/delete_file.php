@@ -12,6 +12,7 @@
  * @author 001348911
  */
 class delete_file {
+    
     public function deleteFile($file){
         unlink('./uploads/'.$file);
     }
