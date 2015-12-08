@@ -29,7 +29,7 @@ try {
     if ( 'corp' === $resource ) {
         
         $resourceData = new CorporationResource();
-        
+                
         if ( 'GET' === $verb ) {
             
             if ( NULL === $id ) {
@@ -41,6 +41,19 @@ try {
                 $restServer->setData($resourceData->get($id));
                 
             }            
+            
+        }
+        
+        if ('DELETE' === $verb){
+            if (is_null($id)) {
+                throw new InvalidArgumentException('missing ID');
+            } else {
+                if ($resourceData->delete($id)){
+                    $restServer->setMessage('Deleted successfully');
+                } else {
+                    throw new InvalidArgumentException('Delete unsuccessful for id '. $id);
+                }
+            }
             
         }
                 
@@ -61,6 +74,13 @@ try {
             
             if ( NULL === $id ) {
                 throw new InvalidArgumentException('Corporation ID ' . $id . ' was not found');
+            } else {
+                if ($resourceData->put($serverData, $id)) {
+                $restServer->setMessage('Corporation Updated');
+                $restServer->setStatus(201);
+            } else {
+                throw new Exception('Corporation could not be updated');
+            }
             }
             
         }
@@ -73,7 +93,7 @@ try {
    
     
     
-} catch (InvalidArgumentException $e) {
+} catch (InvalidArgumentException $ex) {
     $restServer->setStatus(400);
     $restServer->setErrors($ex->getMessage());
 } catch (Exception $ex) {    

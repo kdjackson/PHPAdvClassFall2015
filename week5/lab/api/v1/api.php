@@ -22,7 +22,7 @@ try {
         if ( 'GET' === $verb ) {
             
             if ( NULL === $id ) {
-                $stmt = $db->prepare("SELECT * FROM corps");
+                $stmt = $db->prepare("SELECT * FROM corp");
                 
                 if ($stmt->execute() && $stmt->rowCount() > 0) {
                     $response['data'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
