@@ -1,0 +1,21 @@
+<h1>Corporation Details</h1>
+
+<div class="content">
+
+    <h2>{{corporation.corp| uppercase}}</h2>
+    <p><strong> Corporation Date:</strong> {{ corporation.incorp_dt | date:'longDate' }} </p>
+
+    <p><strong>Email: </strong>
+        <a href="" ng-href="mailto:{{corporation.email}}">{{corporation.email}}</a>
+    </p>
+
+    <div>
+        {{corporation.owner}} <br />
+        <a href="tel:{{corporation.phone}}">{{corporation.phone}}</a> <br />
+        {{corporation.location}}
+    </div>
+
+    <div class="googleMap"></div>
+
+    <p><a href="#/">Back</a></p>
+</div>

@@ -1,14 +1,14 @@
 <?php
 
 class CorporationResource implements IRestModel {
-    
-      private $db;
+
+    private $db;
 
     function __construct() {
-        
+
         $util = new Util();
         $dbo = new DB($util->getDBConfig());
-        $this->setDb($dbo->getDB());        
+        $this->setDb($dbo->getDB());
     }
 
     private function getDb() {
@@ -19,33 +19,28 @@ class CorporationResource implements IRestModel {
         $this->db = $db;
     }
 
-    
-    
-    
-    
     public function getAll() {
         $stmt = $this->getDb()->prepare("SELECT * FROM corps");
-        $results = array();      
+        $results = array();
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         return $results;
     }
-    
+
     public function get($id) {
-       
+
         $stmt = $this->getDb()->prepare("SELECT * FROM corps where id = :id");
         $binds = array(":id" => $id);
 
-        $results = array(); 
+        $results = array();
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
         }
-        
+
         return $results;
-                
     }
-    
+
     public function post($serverData) {
         /* note you should validate before adding to the data base */
         $stmt = $this->getDb()->prepare("INSERT INTO corps SET corp = :corp, email = :email, owner = :owner, phone = :phone, location = :location");
@@ -59,10 +54,10 @@ class CorporationResource implements IRestModel {
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             return true;
-        } 
+        }
         return false;
     }
-    
+
     public function put($serverData, $id) {
         /* note you should validate before adding to the data base */
         $stmt = $this->getDb()->prepare("UPDATE corps SET corp = :corp, email = :email, owner = :owner, phone = :phone, location = :location WHERE id = :id");
@@ -73,26 +68,24 @@ class CorporationResource implements IRestModel {
             ":phone" => $serverData['phone'],
             ":location" => $serverData['location'],
             ":id" => $id
-            
-                
         );
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             return true;
-        } 
+        }
         return false;
     }
-    
+
     public function delete($id) {
-       
+
         $stmt = $this->getDb()->prepare("DELETE FROM corps where id = :id");
         $binds = array(":id" => $id);
 
-        $results = array(); 
+        $results = array();
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             return true;
-        } 
+        }
         return false;
     }
-    
+
 }

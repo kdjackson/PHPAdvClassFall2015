@@ -44,4 +44,3 @@ appServices.factory('addressProvider', ['$http', 'config', function($http, confi
     };
 }]);
 
-

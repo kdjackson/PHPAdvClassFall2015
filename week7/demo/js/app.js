@@ -8,7 +8,7 @@ var myApp = angular.module('myApp', [
 
 myApp.constant('config', {
     "endpoints": {
-       "address" : 'http://localhost:81/PHPAdvClass2015/week5/demo/api/v1/address',
+       "address" : 'http://localhost:81/PHPAdvClassFall2015/week5/demo/api/v1/address',
     },
     "models" : {
         "address" : {
