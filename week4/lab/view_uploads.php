@@ -15,38 +15,54 @@ require_once './autoload.php';
     <a href="index.php">Upload Files</a>
     <br />
     <br />
-<?php
+    <?php
+    $util = new Util();
+    $errors = array();
+
+    if ($util->isPostRequest()) {
+        $filename = filter_input(INPUT_POST,'filename');
+        
+        try {
+            $deleteFile = new Delete_file();
+            $deleteFile->deleteFile($filename);
+            $message = 'File deleted successfully';
+        } catch (Exception $ex) {
+            $errors[] = $ex->getMessage();
+        }
+    }
 
     $directory = scandir('./uploads');
 
     //var_dump($directory);
-    
-?>
-    <table class="table"><thead><td>Filename</td>
-    <td>File Type</td><td>File Size</td><td>Delete</td></thead>
-<?php foreach ($directory as $file) : ?>
-    <?php 
-            $type = pathinfo($file)['extension'];
-            $size = filesize('./uploads/'.$file);
     ?>
+    <table class="table"><thead><td>Filename</td>
+        <td>File Type</td><td>File Size</td><td>Delete</td></thead>
+    <?php foreach ($directory as $file) : ?>
+        <?php
+        $type = pathinfo($file)['extension'];
+        $size = filesize('./uploads/' . $file);
+        ?>
         <?php if (!is_dir($file)): ?>
-    <tr>
-        <td><a href="<?php echo './uploads'.DIRECTORY_SEPARATOR.$file?>"><?php echo $file?></a></td>
-            
-        <td><?php echo $type; ?></td>
-            
-        <td><?php echo $size; ?></td>
-            
-        <td><form action="#" method="POST">
-                <button class="btn btn-primary" type="button">Delete File</button>
-                <input type="hidden" value="<?php echo basename($file)?>" name="filename"/>
-                
-            </form>
-        </td>
-    </tr>
+            <tr>
+                <td><a href="<?php echo './uploads' . DIRECTORY_SEPARATOR . $file ?>"><?php echo $file ?></a></td>
 
-    <?php endif; ?>
-<?php endforeach; ?>
+                <td><?php echo $type; ?></td>
+
+                <td><?php echo $size; ?></td>
+
+                <td><form action="#" method="POST">
+                        <button class="btn btn-primary" type="submit">Delete File</button>
+                        <input type="hidden" value="<?php echo basename($file) ?>" name="filename"/>
+
+                    </form>
+                </td>
+            </tr>
+
+        <?php endif; ?>
+    <?php endforeach; ?>
 </table>
+
+<?php include './templates/errors.html.php'; ?>
+<?php include './templates/messages.html.php'; ?>
 
 </html>
