@@ -1,7 +1,7 @@
 <!--code from week 1 to display success messages-->
 
-<?php if ( isset($errors) && is_array($errors) ) : ?>
-    <?php foreach ($errors as $err): ?>
-        <p class="bg-danger"><?php echo $err; ?></p>
-    <?php endforeach; ?>
+<?php if ( isset($message) ) : ?>
+
+        <p class="bg"><?php echo $message; ?></p>
+
 <?php endif; ?>

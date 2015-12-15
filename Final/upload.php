@@ -195,6 +195,7 @@ try {
 
      */
     $util = new Util();
+    $fileName .= '.' . $ext;
     $imgupload = new ImageUpload();
     
     $imgupload->saveimage($_SESSION['user_id'], $fileName);
